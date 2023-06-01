@@ -71,3 +71,15 @@ class DetailView(DetailView):
     template_name ='detail.html'
 
     model = PhotoPost
+
+class MypageView(ListView):
+
+    template_name ='mypage.html'
+
+    paginate_by 15
+
+    def get_queryset(self):
+
+        queryset = PhotoPost.object.filter(
+            user=self.request.user).order_by('-poster_at')
+        return queryset
