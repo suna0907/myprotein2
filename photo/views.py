@@ -19,6 +19,8 @@ from .models import PhotoPost
 
 from django.views.generic import DetailView
 
+from django.views.generic import DeleteView
+
 class IndexView(ListView):
 
     template_name = 'index.html'
@@ -83,3 +85,15 @@ class MypageView(ListView):
         queryset = PhotoPost.object.filter(
             user=self.request.user).order_by('-poster_at')
         return queryset
+    
+class PhotoDeleteView(DeleteView):
+
+    model = PhotoPost
+
+    template_name ='photo_delete.html'
+
+    success_url = reverse_lazy('photo:mypage')
+
+    def delete(self, request, *args, **kwargs):
+
+        return super().delete(request, *args, **kwargs)

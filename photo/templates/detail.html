@@ -23,6 +23,13 @@
                 {% if object.image2 %}
                     <p><img src="{{ objent.image2.url }}"></img></p>
                 {% endif %}
+                
+                {% if request.user == object.user %}
+                <form method="POST">
+
+                <a href="{% url 'photo:photo_delete' object.pk %}"
+                    class="btn btn-primary my-2">削除する</a>
+                {% endif %}
 
             </div>
         </div>
