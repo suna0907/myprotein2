@@ -14,4 +14,10 @@ urlpatterns = [
          views.CategoryView.as_view(),
          name = 'photos_cat'
          ),
+         
+    path('user-list/<int:user>',
+         views.UserView.as_view(),
+         name = 'user_list'
+         ),
+
 ]
