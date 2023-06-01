@@ -21,6 +21,8 @@ class IndexView(ListView):
 
     queryset = PhotoPost.objects.order_by('-posted_at')
 
+    pagenate_by = 15
+
 
 @method_decorator(login_required, name='dispatch')
 class CreatePhotoView(CreateView):
