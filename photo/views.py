@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 
 # Create your views here.
@@ -48,3 +50,16 @@ class CreatePhotoView(CreateView):
 class PostSuccessView(TemplateView):
 
     template_name = 'post_success.html'
+
+class UserView(ListView):
+
+    template_name ='index.html'
+
+    paginate_by = 15
+
+    def get_queryset(self):
+
+        user_id = self.kwargs['user']
+        user_list = PhotoPost.objents.filter(
+            user=user_id).order_by('-posted_at')
+        return user_list
