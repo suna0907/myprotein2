@@ -12,7 +12,7 @@
               <p class="card-text"> {{record.title}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'photo:photo_detail' record.pk %}'">
                   <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'photo:photos_cat' category=record.category.id %}'">{{record.category.title}}</button>
                 </div>
 

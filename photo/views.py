@@ -17,6 +17,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import PhotoPost
 
+from django.views.generic import DetailView
+
 class IndexView(ListView):
 
     template_name = 'index.html'
@@ -63,3 +65,9 @@ class UserView(ListView):
         user_list = PhotoPost.objents.filter(
             user=user_id).order_by('-posted_at')
         return user_list
+    
+class DetailView(DetailView):
+
+    template_name ='detail.html'
+
+    model = PhotoPost
